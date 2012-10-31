@@ -18,7 +18,7 @@ Configuration:
 
 class apc {
     case $operatingsystem {
-        Debian,Ubuntu:  { include apc::debian}
+        Debian,Ubuntu,CentOS:  { include apc::config}
         default: { fail "Unsupported operatingsystem ${operatingsystem}" }
     } 
 }

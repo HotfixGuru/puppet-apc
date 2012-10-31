@@ -1,4 +1,4 @@
-class apc::debian {
+class apc::config {
 
     include apc::params
     
