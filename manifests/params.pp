@@ -5,7 +5,7 @@ class apc::params {
     CentOS          => 'php-pecl-apc',
   }
 
-  #Note: apc does not macke much sense without php installed 
+  #Note: apc does not make much sense without php installed
   $php = $operatingsystem ? {
     /Debian|Ubuntu/ => 'php5-cli',
     CentOS          => 'php',
@@ -23,7 +23,7 @@ class apc::params {
   #specify the number of shared memory segments
   $shmsegments = 1
 
-  #specifiy the number of seconds until a cache entry will be expunged
+  #specify the number of seconds until a cache entry will be expunged
   #the value 0 defines that entries are not expunged until the cache is full and the space is needed
   $ttl = 3600
 

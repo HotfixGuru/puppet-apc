@@ -12,20 +12,30 @@ Example usage:
 
   include apc
 
+  with parameter overrides:
+
+  class{'::apc':
+    param => 'value',
+  }
+
 Configuration:
 
-  - edit params.pp to change predefinded values
-  - add new values to augeas-command in depian.pp
+  - edit params.pp to change default values
+  - add new values to augeas-command in config.pp
 
-Author: Stefan Kögel
+Author:      Stefan Kögel
+Contributor: Dave Simons [Inuits BVBA - inuits.eu]
 
 GitHub: git@github.com:stkoegel/puppet-apc.git
 
 Changelog:
+Version 0.2 - Added CentOS support
+            - Syntax update
+            - Allow external overriding of parameters
+            - Added 'stat', 'canonicalize' and 'include_once_override' values
 Version 0.1 - Initial Commit for Debian/Ubuntu and three config values
 
 ToDo:
-- add support for RedHat and other os
 - make configuration more flexible by defining a config class (see below)
 
 define config ( $value ) {

@@ -1,7 +1,8 @@
 /*
+
 == Class: apc
 
-Installs APC Support with basis configuration.
+Installs APC Support with basic configuration.
 Depends on (tested with)
  - https://github.com/camptocamp/puppet-apache.git
  - https://github.com/camptocamp/puppet-php.git
@@ -10,10 +11,17 @@ Example usage:
 
   include apc
 
+  with parameter overrides:
+
+  class{'::apc':
+    param => 'value',
+  }
+
 Configuration:
 
-  - edit params.pp to change predefinded values
-  - add new values to augeas-command in depian.pp
+  - edit params.pp to change default values
+  - add new values to augeas-command in config.pp
+
 */
 
 class apc (

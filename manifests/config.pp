@@ -11,7 +11,6 @@ class apc::config {
     ],
   }
 
-  #specify your additional settings inside changes
   augeas{"apc.ini settings":
     context => "/files/${apc::conf}",
     lens    => 'PHP.lns',
