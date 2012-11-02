@@ -5,12 +5,6 @@ class apc::params {
     CentOS          => 'php-pecl-apc',
   }
 
-  #Note: apc does not make much sense without php installed
-  $php = $operatingsystem ? {
-    /Debian|Ubuntu/ => 'php5-cli',
-    CentOS          => 'php',
-  } 
-
   $conf = $operatingsystem ? {
     /Debian|Ubuntu/ => '/etc/php5/apache2/conf.d/apc.ini/.anon/',
     centOS          => '/etc/php.d/apc.ini/.anon/',

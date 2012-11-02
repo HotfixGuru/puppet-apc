@@ -26,7 +26,6 @@ Configuration:
 
 class apc (
   $pkg         = $::apc::params::pkg,
-  $php         = $::apc::params::php,
   $conf        = $::apc::params::conf,
   $shmsize     = $::apc::params::shmsize,
   $shmsegments = $::apc::params::shmsegments,
