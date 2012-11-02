@@ -1,9 +1,9 @@
 class apc::config {
 
-  require apc::params
+  require ::apc
 
   package{"apc":
-    name    => $apc::params::pkg,
+    name    => $apc::pkg,
     ensure  => 'installed',
     require => Class[
       '::php',
@@ -13,14 +13,14 @@ class apc::config {
 
   #specify your additional settings inside changes
   augeas{"apc.ini settings":
-    context => "/files/${apc::params::conf}",
+    context => "/files/${apc::conf}",
     lens    => 'PHP.lns',
-    incl    => "${apc::params::conf}/apc.ini",
+    incl    => "${apc::conf}/apc.ini",
     changes => [
       'set enabled 1',
-      "set shm_size ${apc::params::shmsize}",
-      "set shm_segments ${apc::params::shmsegments}",
-      "set ttl ${apc::params::ttl}"
+      "set shm_size ${apc::shmsize}",
+      "set shm_segments ${apc::shmsegments}",
+      "set ttl ${apc::ttl}"
     ],
     require => [
       Package['apc'],

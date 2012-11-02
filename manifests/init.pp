@@ -16,7 +16,14 @@ Configuration:
   - add new values to augeas-command in depian.pp
 */
 
-class apc {
+class apc (
+  $pkg         = $::apc::params::pkg,
+  $php         = $::apc::params::php,
+  $conf        = $::apc::params::conf,
+  $shmsize     = $::apc::params::shmsize,
+  $shmsegments = $::apc::params::shmsegments,
+  $ttl         = $::apc::params::ttl,
+) inherits ::apc::params {
 
   case $operatingsystem {
     Debian,Ubuntu,CentOS:  { include apc::config }
