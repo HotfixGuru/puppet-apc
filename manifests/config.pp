@@ -7,7 +7,7 @@ class apc::config {
     ensure  => 'installed',
     require => Class[
       '::php',
-      '::apache',
+      '::apache'
     ],
   }
 
