@@ -25,11 +25,14 @@ Configuration:
 */
 
 class apc (
-  $pkg         = $::apc::params::pkg,
-  $conf        = $::apc::params::conf,
-  $shmsize     = $::apc::params::shmsize,
-  $shmsegments = $::apc::params::shmsegments,
-  $ttl         = $::apc::params::ttl,
+  $pkg                   = $::apc::params::pkg,
+  $conf                  = $::apc::params::conf,
+  $shmsize               = $::apc::params::shmsize,
+  $shmsegments           = $::apc::params::shmsegments,
+  $ttl                   = $::apc::params::ttl,
+  $stat                  = $::apc::params::stat,
+  $canonicalize          = $::apc::params::canonicalize,
+  $include_once_override = $::apc::params::include_once_override,
 ) inherits ::apc::params {
 
   case $operatingsystem {
