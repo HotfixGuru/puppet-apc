@@ -1,5 +1,6 @@
 class apc::config {
 
+  require ::augeas
   require ::apc
 
   package{"apc":
