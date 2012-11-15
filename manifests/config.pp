@@ -16,13 +16,13 @@ class apc::config {
     lens    => 'PHP.lns',
     incl    => "${::apc::conf}/apc.ini",
     changes => [
-      'set enabled 1',
-      "set shm_size ${::apc::shmsize}",
-      "set shm_segments ${::apc::shmsegments}",
-      "set ttl ${::apc::ttl}",
-      "set stat ${::apc::stat}",
-      "set canonicalize ${::apc::canonicalize}",
-      "set include_once_override ${::apc::include_once_override}"
+      'set apc.enabled 1',
+      "set apc.shm_size ${::apc::shmsize}",
+      "set apc.shm_segments ${::apc::shmsegments}",
+      "set apc.ttl ${::apc::ttl}",
+      "set apc.stat ${::apc::stat}",
+      "set apc.canonicalize ${::apc::canonicalize}",
+      "set apc.include_once_override ${::apc::include_once_override}"
     ],
     require => [
       Package['apc'],
