@@ -1,6 +1,5 @@
 class apc::config {
 
-  require ::augeas
   require ::apc
 
   package{"apc":
@@ -27,7 +26,6 @@ class apc::config {
     ],
     require => [
       Package['apc'],
-      Class['::augeas'],
     ],
   }
 
