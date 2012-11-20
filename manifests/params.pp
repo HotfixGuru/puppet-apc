@@ -31,4 +31,6 @@ class apc::params {
   #Turning this on optimizes the 'include_once' and 'require_once' calls, to avoid the expensive system calls used.
   $include_once_override = 0
 
+  $rfc1867 = 0
+
 }

@@ -33,6 +33,7 @@ class apc (
   $stat                  = $::apc::params::stat,
   $canonicalize          = $::apc::params::canonicalize,
   $include_once_override = $::apc::params::include_once_override,
+  $rfc1867               = $::apc::params::rfc1867,
 ) inherits ::apc::params {
 
   case $operatingsystem {

@@ -21,6 +21,7 @@ class apc::config {
       "set apc.stat ${::apc::stat}",
       "set apc.canonicalize ${::apc::canonicalize}",
       "set apc.include_once_override ${::apc::include_once_override}"
+      "set apc.rfc1867 ${::apc::rfc1867}"
     ],
     require => [
       Package['apc'],
