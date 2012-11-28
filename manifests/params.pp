@@ -10,6 +10,9 @@ class apc::params {
     CentOS          => '/etc/php.d/apc.ini/.anon/',
   }
 
+  #allow disabling of apc entirely
+  $enabled = 1
+
   #specify the shared memory size
   #K - KB, M - MB, G - GB
   $shmsize = 128M

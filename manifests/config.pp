@@ -14,7 +14,7 @@ class apc::config {
   augeas{"apc.ini settings":
     context => "/files/${::apc::conf}",
     changes => [
-      'set apc.enabled 1',
+      "set apc.enabled ${::apc::enabled}",
       "set apc.shm_size ${::apc::shmsize}",
       "set apc.shm_segments ${::apc::shmsegments}",
       "set apc.ttl ${::apc::ttl}",

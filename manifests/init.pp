@@ -27,6 +27,7 @@ Configuration:
 class apc (
   $pkg                   = $::apc::params::pkg,
   $conf                  = $::apc::params::conf,
+  $enabled               = $::apc::params::enabled,
   $shmsize               = $::apc::params::shmsize,
   $shmsegments           = $::apc::params::shmsegments,
   $ttl                   = $::apc::params::ttl,
