@@ -13,8 +13,6 @@ class apc::config {
 
   augeas{"apc.ini settings":
     context => "/files/${::apc::conf}",
-    lens    => 'PHP.lns',
-    incl    => "${::apc::conf}/apc.ini",
     changes => [
       "set apc.enabled ${::apc::enabled}",
       "set apc.shm_size ${::apc::shmsize}",
