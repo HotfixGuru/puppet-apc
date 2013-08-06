@@ -2,12 +2,12 @@ class apc::params {
 
   $pkg = $operatingsystem ? {
     /Debian|Ubuntu/ => 'php-apc',
-    CentOS          => 'php-pecl-apc',
+    /CentOS|RedHat/ => 'php-pecl-apc',
   }
 
   $conf = $operatingsystem ? {
     /Debian|Ubuntu/ => '/etc/php5/apache2/conf.d/apc.ini/.anon/',
-    centOS          => '/etc/php.d/apc.ini/.anon/',
+    /CentOS|RedHat/ => '/etc/php.d/apc.ini/.anon/',
   }
 
   #specify the shared memory size
