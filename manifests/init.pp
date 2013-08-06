@@ -36,7 +36,7 @@ class apc (
 ) inherits ::apc::params {
 
   case $operatingsystem {
-    Debian,Ubuntu,CentOS:  { include ::apc::config }
+    Debian,Ubuntu,CentOS,RedHat:  { include ::apc::config }
     default:               { fail "Unsupported operatingsystem: ${operatingsystem}" }
   } 
 
