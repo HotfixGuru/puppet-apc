@@ -36,6 +36,7 @@ class apc (
   $include_once_override = $::apc::params::include_once_override,
   $rfc1867               = $::apc::params::rfc1867,
   $mmap_file_mask        = $::apc::params::mmap_file_mask,
+  $enable_cli            = $::apc::params::enable_cli,
 ) inherits ::apc::params {
 
   case $operatingsystem {

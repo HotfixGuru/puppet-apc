@@ -37,5 +37,6 @@ class apc::params {
   $rfc1867 = 0
 
   $mmap_file_mask = NULL
+  $enable_cli = 0
 
 }

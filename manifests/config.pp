@@ -23,6 +23,7 @@ class apc::config {
       "set apc.include_once_override ${::apc::include_once_override}",
       "set apc.rfc1867 ${::apc::rfc1867}",
       "set apc.mmap_file_mask ${::apc::mmap_file_mask}",
+      "set apc.enable_cli ${::apc::enable_cli}",
     ],
     require => [
       Package['apc'],
