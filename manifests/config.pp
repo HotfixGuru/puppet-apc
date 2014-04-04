@@ -24,6 +24,8 @@ class apc::config {
       "set apc.rfc1867 ${::apc::rfc1867}",
       "set apc.mmap_file_mask ${::apc::mmap_file_mask}",
       "set apc.enable_cli ${::apc::enable_cli}",
+      "set apc.filters ' '", #intern workaround for missing right hand value bug
+      "set apc.preload_path ' '", #intern workaround for missing right hand value bug
     ],
     require => [
       Package['apc'],
