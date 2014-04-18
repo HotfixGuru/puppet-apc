@@ -6,8 +6,8 @@ class apc::params {
   }
 
   $conf = $::operatingsystem ? {
-    /Debian|Ubuntu/ => '/etc/php5/apache2/conf.d/apc.ini/.anon/',
-    CentOS          => '/etc/php.d/apc.ini/.anon/',
+    /Debian|Ubuntu/ => '/etc/php5/apache2/conf.d/apc.ini/',
+    CentOS          => '/etc/php.d/apc.ini/',
   }
 
   #allow disabling of apc entirely
