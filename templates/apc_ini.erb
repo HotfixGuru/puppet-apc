@@ -32,11 +32,11 @@ apc.cache_by_default=1
 ; A comma-separated list of POSIX extended regular expressions.
 apc.filters= 
 ; The mktemp-style file_mask to pass to the mmap module 
-apc.mmap_file_mask=NULL
+apc.mmap_file_mask=<%= @mmap_file_mask %>
 ; This file_update_protection setting puts a delay on caching brand new files.
 apc.file_update_protection=2
 ; Setting this enables APC for the CLI version of PHP (Mostly for testing and debugging).
-apc.enable_cli=0
+apc.enable_cli=<%= @enable_cli %>
 ; Prevents large files from being cached
 apc.max_file_size=1M
 ; Whether to stat the main script file and the fullpath includes.
