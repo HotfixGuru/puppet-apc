@@ -4,13 +4,19 @@ extension = apc.so
 ; Options for the APC module version >= 3.1.3
 ; See http://www.php.net/manual/en/apc.configuration.php
 
-; This can be set to 0 to disable APC. 
+<% if @php_version == "5.5" %>
+; Options only for PHP5.5
+apc.enable_opcode_cache=<%= @enabled %>
+apc.enable_cli=<%= @enabled %>
+<% end %>
+
+; This can be set to 0 to disable APC.
 apc.enabled=<%= @enabled %>
-; The number of shared memory segments to allocate for the compiler cache. 
+; The number of shared memory segments to allocate for the compiler cache.
 apc.shm_segments=<%= @shmsegments %>
 ; The size of each shared memory segment, with M/G suffix
 apc.shm_size=<%= @shmsize %>
-; A "hint" about the number of distinct source files that will be included or 
+; A "hint" about the number of distinct source files that will be included or
 ; requested on your web server. Set to zero or omit if you are not sure;
 apc.num_files_hint=1024
 ; Just like num_files_hint, a "hint" about the number of distinct user cache
@@ -24,14 +30,14 @@ apc.use_request_time=1
 ; The number of seconds a user cache entry is allowed to idle in a slot in case
 ; this cache entry slot is needed by another entry.
 apc.user_ttl=7200
-; The number of seconds that a cache entry may remain on the garbage-collection list. 
+; The number of seconds that a cache entry may remain on the garbage-collection list.
 apc.gc_ttl=3600
 ; On by default, but can be set to off and used in conjunction with positive
 ; apc.filters so that files are only cached if matched by a positive filter.
 apc.cache_by_default=1
 ; A comma-separated list of POSIX extended regular expressions.
-apc.filters= 
-; The mktemp-style file_mask to pass to the mmap module 
+apc.filters=
+; The mktemp-style file_mask to pass to the mmap module
 apc.mmap_file_mask=<%= @mmap_file_mask %>
 ; This file_update_protection setting puts a delay on caching brand new files.
 apc.file_update_protection=2
@@ -41,12 +47,12 @@ apc.enable_cli=<%= @enable_cli %>
 apc.max_file_size=1M
 ; Whether to stat the main script file and the fullpath includes.
 apc.stat=<%= @stat %>
-; Vertification with ctime will avoid problems caused by programs such as svn or rsync by making 
+; Vertification with ctime will avoid problems caused by programs such as svn or rsync by making
 ; sure inodes have not changed since the last stat. APC will normally only check mtime.
 apc.stat_ctime=0
 ; Whether to canonicalize paths in stat=0 mode or fall back to stat behaviour
 apc.canonicalize=<%= @canonicalize %>
-; With write_lock enabled, only one process at a time will try to compile an 
+; With write_lock enabled, only one process at a time will try to compile an
 ; uncached script while the other processes will run uncached
 apc.write_lock=1
 ; Logs any scripts that were automatically excluded from being cached due to early/late binding issues.
@@ -61,10 +67,10 @@ apc.rfc1867_ttl=3600
 apc.include_once_override=<%= @include_once_override %>
 apc.lazy_classes=0
 apc.lazy_functions=0
-; Enables APC handling of signals, such as SIGSEGV, that write core files when signaled. 
+; Enables APC handling of signals, such as SIGSEGV, that write core files when signaled.
 ; APC will attempt to unmap the shared memory segment in order to exclude it from the core file
 apc.coredump_unmap=0
-; Records a md5 hash of files. 
+; Records a md5 hash of files.
 apc.file_md5=0
 ; not documented
 apc.preload_path=

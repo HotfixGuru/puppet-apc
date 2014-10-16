@@ -10,7 +10,7 @@ class apc::config {
       '::apache'
     ],
   }
- 
+
   file { "${::apc::conf}":
     ensure => file,
     content => template('apc/apc_ini.erb'),

@@ -37,6 +37,7 @@ class apc (
   $rfc1867               = $::apc::params::rfc1867,
   $mmap_file_mask        = $::apc::params::mmap_file_mask,
   $enable_cli            = $::apc::params::enable_cli,
+  $php_version           = $::apc::params::php_version,
 ) inherits ::apc::params {
 
   case $operatingsystem {

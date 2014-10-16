@@ -39,4 +39,6 @@ class apc::params {
   $mmap_file_mask = NULL
   $enable_cli = 0
 
+  $php_version = '5.3'
+
 }
