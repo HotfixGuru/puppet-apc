@@ -8,10 +8,14 @@ extension = apc.so
 ; Options only for PHP5.5
 apc.enable_opcode_cache=<%= @enabled %>
 apc.enable_cli=<%= @enabled %>
-<% end %>
-
+; This can be set to 0 to disable APC.
+apc.enabled=0
+<% else %>
 ; This can be set to 0 to disable APC.
 apc.enabled=<%= @enabled %>
+<% end %>
+
+
 ; The number of shared memory segments to allocate for the compiler cache.
 apc.shm_segments=<%= @shmsegments %>
 ; The size of each shared memory segment, with M/G suffix
