@@ -43,6 +43,6 @@ class apc (
   case $operatingsystem {
     Debian,Ubuntu,CentOS:  { include ::apc::config }
     default:               { fail "Unsupported operatingsystem: ${operatingsystem}" }
-  } 
+  }
 
 }
