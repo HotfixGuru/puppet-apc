@@ -25,8 +25,6 @@ Configuration:
 */
 
 class apc (
-  $pkg                   = $::apc::params::pkg,
-  $conf                  = $::apc::params::conf,
   $enabled               = $::apc::params::enabled,
   $shmsize               = $::apc::params::shmsize,
   $shmsegments           = $::apc::params::shmsegments,
@@ -39,6 +37,32 @@ class apc (
   $enable_cli            = $::apc::params::enable_cli,
   $php_version           = $::apc::params::php_version,
 ) inherits ::apc::params {
+
+  case $php_version {
+    '5.3': {
+      $pkg = $::operatingsystem ? {
+        /Debian|Ubuntu/ => 'php-apc',
+        CentOS          => 'php-pecl-apc',
+      }
+
+      $conf = $::operatingsystem ? {
+        /Debian|Ubuntu/ => '/etc/php5/apache2/conf.d/apc.ini/',
+        CentOS          => '/etc/php.d/apc.ini/',
+      }
+    }
+    #install apcu instead of apc for php versions other than 5.3
+    '5.5': {
+      $pkg = $::operatingsystem ? {
+        /Debian|Ubuntu/ => 'php-apcu',
+        CentOS          => 'php-pecl-apcu',
+      }
+
+      $conf = $::operatingsystem ? {
+        /Debian|Ubuntu/ => '/etc/php5/apache2/conf.d/apcu.ini/',
+        CentOS          => '/etc/php.d/apcu.ini/',
+      }
+    }
+  }
 
   case $operatingsystem {
     Debian,Ubuntu,CentOS:  { include ::apc::config }
