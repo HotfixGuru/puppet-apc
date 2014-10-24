@@ -29,7 +29,7 @@ class apc::config {
   }
 
   package{"apc":
-    name    => $::apc::pkg,
+    name    => $pkg,
     ensure  => 'installed',
     require => Class[
       '::php',
@@ -37,7 +37,7 @@ class apc::config {
     ],
   }
 
-  file { "${::apc::conf}":
+  file { "${conf}":
     ensure => file,
     content => template('apc/apc_ini.erb'),
     require => [
