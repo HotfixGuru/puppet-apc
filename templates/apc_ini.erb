@@ -1,20 +1,16 @@
-; Enable apc extension module
+<% if (@php_version == "5.5") and (operatingsystem == 'CentOS') %>
+; Enable apcu extension module
+extension = apcu.so
+<% else %>
+; Enable apcu extension module
 extension = apc.so
+<% end %>
 
 ; Options for the APC module version >= 3.1.3
 ; See http://www.php.net/manual/en/apc.configuration.php
 
-<% if (@php_version == "5.5") and (operatingsystem == 'CentOS') %>
-; Options only for PHP5.5
-apc.enable_opcode_cache=<%= @enabled %>
-apc.enable_cli=<%= @enabled %>
-; This can be set to 0 to disable APC.
-apc.enabled=0
-<% else %>
 ; This can be set to 0 to disable APC.
 apc.enabled=<%= @enabled %>
-<% end %>
-
 
 ; The number of shared memory segments to allocate for the compiler cache.
 apc.shm_segments=<%= @shmsegments %>
