@@ -1,6 +1,6 @@
-class {
+class apc::params {
 
-  $php_version = '5.5'
+  $php_version = '5.3'
 
   case $php_version {
     '5.3': {
