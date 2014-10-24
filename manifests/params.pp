@@ -16,12 +16,12 @@ class apc::params (
     #install apcu instead of apc for php versions other than 5.3
     '5.5': {
       $pkg = $::operatingsystem ? {
-        /Debian|Ubuntu/ => 'php-apcu',
+        /Debian|Ubuntu/ => 'php-apc',
         CentOS          => 'php-pecl-apcu',
       }
 
       $conf = $::operatingsystem ? {
-        /Debian|Ubuntu/ => '/etc/php5/apache2/conf.d/apcu.ini/',
+        /Debian|Ubuntu/ => '/etc/php5/apache2/conf.d/apc.ini/',
         CentOS          => '/etc/php.d/apcu.ini/',
       }
     }
