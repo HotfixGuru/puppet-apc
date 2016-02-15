@@ -44,7 +44,7 @@ class apc::params (
 
   #specify the shared memory size
   #K - KB, M - MB, G - GB
-  $shmsize = 128M
+  $shmsize = '128M'
 
   #specify the number of shared memory segments
   $shmsegments = 1
