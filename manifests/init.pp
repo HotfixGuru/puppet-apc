@@ -1,3 +1,4 @@
+# apc
 /*
 
 == Class: apc
@@ -37,9 +38,9 @@ class apc (
   $enable_cli            = $::apc::params::enable_cli,
 ) inherits ::apc::params {
 
-  case $operatingsystem {
+  case $::operatingsystem {
     Debian,Ubuntu,CentOS:  { include ::apc::config }
-    default:               { fail "Unsupported operatingsystem: ${operatingsystem}" }
+    default:               { fail "Unsupported operatingsystem: ${::operatingsystem}" }
   }
 
 }

@@ -1,3 +1,4 @@
+# class apc::params
 class apc::params (
   $php_version = '5.3'
 ) {
@@ -35,6 +36,17 @@ class apc::params (
       $conf = $::operatingsystem ? {
         /Debian|Ubuntu/ => '/etc/php5/apache2/conf.d/apc.ini/',
         CentOS          => '/etc/php.d/apcu.ini/',
+      }
+    }
+    '7.0': {
+      $pkg = $::operatingsystem ? {
+        /Debian|Ubuntu/ => 'php-apc',
+        CentOS          => 'php70-php-pecl-apcu.x86_64',
+      }
+
+      $conf = $::operatingsystem ? {
+        /Debian|Ubuntu/ => '/etc/php5/apache2/conf.d/apc.ini/',
+        CentOS          => '/etc/opt/remi/php70/php.d/40-apcu.ini',
       }
     }
   }

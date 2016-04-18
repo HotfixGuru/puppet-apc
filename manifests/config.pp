@@ -1,9 +1,8 @@
 class apc::config {
 
-  require ::apc
+  require apc
 
-  package{"apc":
-    name    => $::apc::pkg,
+  package{ $apc::pkg:
     ensure  => 'installed',
     require => Class[
       '::php',
@@ -11,12 +10,12 @@ class apc::config {
     ],
   }
 
-  file { "${::apc::conf}":
-    ensure => file,
+  file { $apc::conf:
+    ensure  => file,
     content => template('apc/apc_ini.erb'),
     require => [
-       Package['apc']
-     ],
+      Package['apc']
+    ],
   }
 
 }
