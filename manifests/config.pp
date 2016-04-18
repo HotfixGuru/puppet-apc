@@ -2,8 +2,9 @@ class apc::config {
 
   require apc
 
-  package{ $apc::pkg:
-    ensure  => 'installed',
+  package{ 'apc':
+    ensure  => installed,
+    name    => $apc::pkg,
     require => Class[
       '::php',
       '::apache'
