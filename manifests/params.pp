@@ -35,7 +35,7 @@ class apc::params (
 
       $conf = $::operatingsystem ? {
         /Debian|Ubuntu/ => '/etc/php5/apache2/conf.d/apc.ini/',
-        CentOS          => '/etc/php.d/apcu.ini/',
+        CentOS          => '/etc/php.d/apcu.ini',
       }
     }
     '7.0': {
@@ -46,7 +46,7 @@ class apc::params (
 
       $conf = $::operatingsystem ? {
         /Debian|Ubuntu/ => '/etc/php5/apache2/conf.d/apc.ini/',
-        CentOS          => '/etc/opt/remi/php70/php.d/40-apcu.ini',
+        CentOS          => '/etc/php.d/40-apcu.ini',
       }
     }
   }
