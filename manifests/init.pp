@@ -36,11 +36,70 @@ class apc (
   $rfc1867               = $::apc::params::rfc1867,
   $mmap_file_mask        = $::apc::params::mmap_file_mask,
   $enable_cli            = $::apc::params::enable_cli,
+  $php_version           = $::apc::params::php_version,
 ) inherits ::apc::params {
 
+  case $php_version {
+    '5.3': {
+      $pkg = $::operatingsystem ? {
+        /Debian|Ubuntu/ => 'php-apc',
+        CentOS          => 'php-pecl-apc',
+      }
+
+      $conf = $::operatingsystem ? {
+        /Debian|Ubuntu/ => '/etc/php5/apache2/conf.d/apc.ini/',
+        CentOS          => '/etc/php.d/apc.ini/',
+      }
+    }
+    #install apcu instead of apc for php versions other than 5.3
+    '5.4': {
+      $pkg = $::operatingsystem ? {
+        /Debian|Ubuntu/ => 'php-apc',
+        CentOS          => 'php-pecl-apcu',
+      }
+
+      $conf = $::operatingsystem ? {
+        /Debian|Ubuntu/ => '/etc/php5/apache2/conf.d/apc.ini/',
+        CentOS          => '/etc/php.d/apcu.ini/',
+      }
+    }
+    #install apcu instead of apc for php versions other than 5.3
+    '5.5': {
+      $pkg = $::operatingsystem ? {
+        /Debian|Ubuntu/ => 'php-apc',
+        CentOS          => 'php-pecl-apcu',
+      }
+
+      $conf = $::operatingsystem ? {
+        /Debian|Ubuntu/ => '/etc/php5/apache2/conf.d/apc.ini/',
+        CentOS          => '/etc/php.d/apcu.ini',
+      }
+    }
+    '7.0': {
+      $pkg = $::operatingsystem ? {
+        /Debian|Ubuntu/ => 'php-apc',
+        CentOS          => 'php70-php-pecl-apcu.x86_64',
+      }
+
+      $conf = $::operatingsystem ? {
+        /Debian|Ubuntu/ => '/etc/php5/apache2/conf.d/apc.ini/',
+        CentOS          => '/etc/php.d/40-apcu.ini',
+      }
+    }
+    default:{
+      fail "Unsupported PHP version: ${php_version}" }
+  }
+
   case $::operatingsystem {
-    Debian,Ubuntu,CentOS:  { include ::apc::config }
-    default:               { fail "Unsupported operatingsystem: ${::operatingsystem}" }
+    Debian,Ubuntu,CentOS:  {
+      class { 'apc::config':
+        conf => $conf,
+        pkg  => $pkg,
+      }
+    }
+    default: {
+      fail "Unsupported operatingsystem: ${::operatingsystem}"
+    }
   }
 
 }
