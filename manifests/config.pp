@@ -29,7 +29,7 @@ class apc::config (
       ensure  => 'link',
       target  => '/opt/remi/php70/root/usr/lib64/php/modules/apcu.so',
       require => Package['apc'],
-      notify  => Service[$::apache::params::notify_service],
+      notify  => Service['httpd'],
     }
 
     file { '/var/lib/pear':
@@ -48,7 +48,7 @@ class apc::config (
       ensure  => 'link',
       target  => '/opt/remi/php70/root/usr/lib64/php/modules/apcu.so',
       require => Package['apc'],
-      notify  => Service[$::apache::params::notify_service],
+      notify  => Service['httpd'],
     }
   }
 
