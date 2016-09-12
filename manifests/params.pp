@@ -31,5 +31,4 @@ class apc::params {
   $mmap_file_mask = NULL
   $enable_cli = 1
   $apcu_backwards_compatibility = false
-  $backwards_compatibility_pkg = undef
 }

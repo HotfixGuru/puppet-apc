@@ -38,7 +38,6 @@ class apc (
   $enable_cli                   = $::apc::params::enable_cli,
   $php_version                  = $::apc::params::php_version,
   $apcu_backwards_compatibility = $::apc::params::apcu_backwards_compatibility,
-  $backwards_compatibility_pkg  = $::apc::params::backwards_compatibility_pkg,
 ) inherits ::apc::params {
 
   case $php_version {
