@@ -1,6 +1,8 @@
 class apc::config (
   $conf,
   $pkg,
+  $apcu_backwards_compatibility,
+  $backwards_compatibility_pkg,
 ) {
 
   require apc

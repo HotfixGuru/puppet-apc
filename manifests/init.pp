@@ -99,8 +99,10 @@ class apc (
   case $::operatingsystem {
     Debian,Ubuntu,CentOS:  {
       class { 'apc::config':
-        conf => $conf,
-        pkg  => $pkg,
+        conf                         => $conf,
+        pkg                          => $pkg,
+        apcu_backwards_compatibility => $apcu_backwards_compatibility,
+        backwards_compatibility_pkg  => $backwards_compatibility_pkg,
       }
     }
     default: {
