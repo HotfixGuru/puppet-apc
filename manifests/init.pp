@@ -38,6 +38,7 @@ class apc (
   $enable_cli                   = $::apc::params::enable_cli,
   $php_version                  = $::apc::params::php_version,
   $apcu_backwards_compatibility = $::apc::params::apcu_backwards_compatibility,
+  $backwards_compatibility_pkg  = $::apc::params::backwards_compatibility_pkg,
 ) inherits ::apc::params {
 
   case $php_version {
@@ -85,6 +86,10 @@ class apc (
       $conf = $::operatingsystem ? {
         /Debian|Ubuntu/ => '/etc/php5/apache2/conf.d/apc.ini/',
         CentOS          => '/etc/php.d/40-apcu.ini',
+      }
+
+      $backwards_compatibility_pkg = $::operatingsystem  ? {
+        CentOS => 'php70-php-pecl-apcu-bc',
       }
     }
     default:{
