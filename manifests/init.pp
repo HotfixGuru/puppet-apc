@@ -26,17 +26,18 @@ Configuration:
 */
 
 class apc (
-  $enabled               = $::apc::params::enabled,
-  $shmsize               = $::apc::params::shmsize,
-  $shmsegments           = $::apc::params::shmsegments,
-  $ttl                   = $::apc::params::ttl,
-  $stat                  = $::apc::params::stat,
-  $canonicalize          = $::apc::params::canonicalize,
-  $include_once_override = $::apc::params::include_once_override,
-  $rfc1867               = $::apc::params::rfc1867,
-  $mmap_file_mask        = $::apc::params::mmap_file_mask,
-  $enable_cli            = $::apc::params::enable_cli,
-  $php_version           = $::apc::params::php_version,
+  $enabled                      = $::apc::params::enabled,
+  $shmsize                      = $::apc::params::shmsize,
+  $shmsegments                  = $::apc::params::shmsegments,
+  $ttl                          = $::apc::params::ttl,
+  $stat                         = $::apc::params::stat,
+  $canonicalize                 = $::apc::params::canonicalize,
+  $include_once_override        = $::apc::params::include_once_override,
+  $rfc1867                      = $::apc::params::rfc1867,
+  $mmap_file_mask               = $::apc::params::mmap_file_mask,
+  $enable_cli                   = $::apc::params::enable_cli,
+  $php_version                  = $::apc::params::php_version,
+  $apcu_backwards_compatibility = $::apc::params::apcu_backwards_compatibility,
 ) inherits ::apc::params {
 
   case $php_version {
