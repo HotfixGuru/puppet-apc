@@ -1,4 +1,4 @@
-<% if (@php_version == "5.5") and (@operatingsystem == 'CentOS') %>
+<% if (@php_version != "5.3") and (@operatingsystem == 'CentOS') %>
 ; Enable apcu extension module
 extension = apcu.so
 <% else %>
