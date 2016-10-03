@@ -46,6 +46,13 @@ class apc::config (
       notify  => Service['httpd'],
     }
 
+    file { '/usr/lib64/php/modules/apc.so':
+      ensure  => 'link',
+      target  => '/opt/remi/php70/root/usr/lib64/php/modules/apc.so',
+      require => Package['apc'],
+      notify  => Service['httpd'],
+    }
+
     file { '/var/lib/pear':
       ensure => directory,
       mode   => '0755',
