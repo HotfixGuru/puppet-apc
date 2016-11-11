@@ -1,29 +1,27 @@
 # apc
-/*
 
-== Class: apc
-
-Installs APC Support with basic configuration.
-Depends on (tested with)
- - https://github.com/camptocamp/puppet-apache.git
- - https://github.com/camptocamp/puppet-php.git
-
-Example usage:
-
-  include apc
-
-  with parameter overrides:
-
-  class{'::apc':
-    param => 'value',
-  }
-
-Configuration:
-
-  - edit params.pp to change default values
-  - add new values to augeas-command in config.pp
-
-*/
+#== Class: apc
+#
+#Installs APC Support with basic configuration.
+#Depends on (tested with)
+# - https://github.com/camptocamp/puppet-apache.git
+# - https://github.com/camptocamp/puppet-php.git
+#
+#Example usage:
+#
+#  include apc
+#
+#  with parameter overrides:
+#
+#  class{'::apc':
+#    param => 'value',
+#  }
+#
+#Configuration:
+#
+#  - edit params.pp to change default values
+#  - add new values to augeas-command in config.pp
+#
 
 class apc (
   $enabled                      = $::apc::params::enabled,
@@ -79,7 +77,7 @@ class apc (
     '7.0': {
       $pkg = $::operatingsystem ? {
         /Debian|Ubuntu/ => 'php-apc',
-        CentOS          => 'php70-php-pecl-apcu.x86_64',
+        CentOS          => 'php-pecl-apcu',
       }
 
       $conf = $::operatingsystem ? {
@@ -88,7 +86,7 @@ class apc (
       }
 
       $backwards_compatibility_pkg = $::operatingsystem  ? {
-        CentOS => 'php70-php-pecl-apcu-bc',
+        CentOS => 'php-pecl-apcu-bc',
       }
     }
     default:{
