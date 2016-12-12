@@ -63,7 +63,7 @@ class apc (
       }
     }
     #install apcu instead of apc for php versions other than 5.3
-    '5.5': {
+    '5.5', '5.6': {
       $pkg = $::operatingsystem ? {
         /Debian|Ubuntu/ => 'php-apc',
         CentOS          => 'php-pecl-apcu',
