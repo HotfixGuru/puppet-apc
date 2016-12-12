@@ -20,7 +20,8 @@ class apc::params {
   #Turning this off will give a significant performance boost, but should only be used when the files served are not changed often.
   $stat = 1
 
-  #If on, then relative paths are canonicalized in no-stat mode. If set, then files included via stream wrappers can not be cached as realpath() does not support stream wrappers.
+  #If on, then relative paths are canonicalized in no-stat mode. If set, then files included via stream wrappers can not be cached
+  #as realpath() does not support stream wrappers.
   $canonicalize = 1
 
   #Turning this on optimizes the 'include_once' and 'require_once' calls, to avoid the expensive system calls used.

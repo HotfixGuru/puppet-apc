@@ -18,7 +18,7 @@ class apc::config (
   }
 
   if $apcu_backwards_compatibility {
-    if $backwards_compatibility_pkg == undef {
+    if $backwards_compatibility_pkg {
       warning('You did not specify the apcu backwards compatibility package name, it will not be installed!')
     }
     else {

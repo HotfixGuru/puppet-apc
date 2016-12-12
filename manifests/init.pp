@@ -47,46 +47,46 @@ class apc (
 
       $conf = $::operatingsystem ? {
         /Debian|Ubuntu/ => '/etc/php5/apache2/conf.d/apc.ini/',
-        CentOS          => '/etc/php.d/apc.ini/',
+        'CentOS'          => '/etc/php.d/apc.ini/',
       }
     }
     #install apcu instead of apc for php versions other than 5.3
     '5.4': {
       $pkg = $::operatingsystem ? {
         /Debian|Ubuntu/ => 'php-apc',
-        CentOS          => 'php-pecl-apcu',
+        'CentOS'          => 'php-pecl-apcu',
       }
 
       $conf = $::operatingsystem ? {
         /Debian|Ubuntu/ => '/etc/php5/apache2/conf.d/apc.ini/',
-        CentOS          => '/etc/php.d/apcu.ini/',
+        'CentOS'          => '/etc/php.d/apcu.ini/',
       }
     }
     #install apcu instead of apc for php versions other than 5.3
     '5.5', '5.6': {
       $pkg = $::operatingsystem ? {
         /Debian|Ubuntu/ => 'php-apc',
-        CentOS          => 'php-pecl-apcu',
+        'CentOS'          => 'php-pecl-apcu',
       }
 
       $conf = $::operatingsystem ? {
         /Debian|Ubuntu/ => '/etc/php5/apache2/conf.d/apc.ini/',
-        CentOS          => '/etc/php.d/apcu.ini',
+        'CentOS'          => '/etc/php.d/apcu.ini',
       }
     }
     '7.0': {
       $pkg = $::operatingsystem ? {
         /Debian|Ubuntu/ => 'php-apc',
-        CentOS          => 'php-pecl-apcu',
+        'CentOS'          => 'php-pecl-apcu',
       }
 
       $conf = $::operatingsystem ? {
         /Debian|Ubuntu/ => '/etc/php5/apache2/conf.d/apc.ini/',
-        CentOS          => '/etc/php.d/40-apcu.ini',
+        'CentOS'          => '/etc/php.d/40-apcu.ini',
       }
 
       $backwards_compatibility_pkg = $::operatingsystem  ? {
-        CentOS => 'php-pecl-apcu-bc',
+        'CentOS' => 'php-pecl-apcu-bc',
       }
     }
     default:{
@@ -94,7 +94,7 @@ class apc (
   }
 
   case $::operatingsystem {
-    Debian,Ubuntu,CentOS:  {
+    'Debian','Ubuntu','CentOS':  {
       class { 'apc::config':
         conf                         => $conf,
         pkg                          => $pkg,
