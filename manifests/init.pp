@@ -42,7 +42,7 @@ class apc (
     '5.3': {
       $pkg = $::operatingsystem ? {
         /Debian|Ubuntu/ => 'php-apc',
-        CentOS          => 'php-pecl-apc',
+        'CentOS'          => 'php-pecl-apc',
       }
 
       $conf = $::operatingsystem ? {
