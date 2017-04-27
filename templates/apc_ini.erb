@@ -13,12 +13,12 @@ extension = apc.so
 ; See http://www.php.net/manual/en/apc.configuration.php
 
 ; This can be set to 0 to disable APC.
-apc.enabled=<%= @enabled %>
+apc.enabled=<%= scope.lookupvar('apc::enabled') %>
 
 ; The number of shared memory segments to allocate for the compiler cache.
-apc.shm_segments=<%= @shmsegments %>
+apc.shm_segments=<%= scope.lookupvar('apc::shmsegments') %>
 ; The size of each shared memory segment, with M/G suffix
-apc.shm_size=<%= @shmsize %>
+apc.shm_size=<%= scope.lookupvar('apc::shmsize') %>
 ; A "hint" about the number of distinct source files that will be included or
 ; requested on your web server. Set to zero or omit if you are not sure;
 apc.num_files_hint=1024
@@ -27,7 +27,7 @@ apc.num_files_hint=1024
 apc.user_entries_hint=4096
 ; The number of seconds a cache entry is allowed to idle in a slot in case this
 ; cache entry slot is needed by another entry.
-apc.ttl=<%= @ttl %>
+apc.ttl=<%= scope.lookupvar('apc::ttl') %>
 ; use the SAPI request start time for TTL
 apc.use_request_time=1
 ; The number of seconds a user cache entry is allowed to idle in a slot in case
@@ -41,33 +41,33 @@ apc.cache_by_default=1
 ; A comma-separated list of POSIX extended regular expressions.
 apc.filters=
 ; The mktemp-style file_mask to pass to the mmap module
-apc.mmap_file_mask=<%= @mmap_file_mask %>
+apc.mmap_file_mask=<%= scope.lookupvar('apc::mmap_file_mask') %>
 ; This file_update_protection setting puts a delay on caching brand new files.
 apc.file_update_protection=2
 ; Setting this enables APC for the CLI version of PHP (Mostly for testing and debugging).
-apc.enable_cli=<%= @enable_cli %>
+apc.enable_cli=<%= scope.lookupvar('apc::enable_cli') %>
 ; Prevents large files from being cached
 apc.max_file_size=1M
 ; Whether to stat the main script file and the fullpath includes.
-apc.stat=<%= @stat %>
+apc.stat=<%= scope.lookupvar('apc::stat') %>
 ; Vertification with ctime will avoid problems caused by programs such as svn or rsync by making
 ; sure inodes have not changed since the last stat. APC will normally only check mtime.
 apc.stat_ctime=0
 ; Whether to canonicalize paths in stat=0 mode or fall back to stat behaviour
-apc.canonicalize=<%= @canonicalize %>
+apc.canonicalize=<%= scope.lookupvar('apc::canonicalize') %>
 ; With write_lock enabled, only one process at a time will try to compile an
 ; uncached script while the other processes will run uncached
 apc.write_lock=1
 ; Logs any scripts that were automatically excluded from being cached due to early/late binding issues.
 apc.report_autofilter=0
 ; RFC1867 File Upload Progress hook handler
-apc.rfc1867=<%= @rfc1867 %>
+apc.rfc1867=<%= scope.lookupvar('apc::rfc1867') %>
 apc.rfc1867_prefix =upload_
 apc.rfc1867_name=APC_UPLOAD_PROGRESS
 apc.rfc1867_freq=0
 apc.rfc1867_ttl=3600
 ; Optimize include_once and require_once calls and avoid the expensive system calls used.
-apc.include_once_override=<%= @include_once_override %>
+apc.include_once_override=<%= scope.lookupvar('apc::include_once_override') %>
 apc.lazy_classes=0
 apc.lazy_functions=0
 ; Enables APC handling of signals, such as SIGSEGV, that write core files when signaled.
