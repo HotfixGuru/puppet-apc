@@ -1,32 +1,39 @@
-class apc::config {
+#
+class apc::config (
+  $conf,
+  $pkg,
+  $apcu_backwards_compatibility,
+  $backwards_compatibility_pkg,
+) {
 
-  require ::apc
+  require apc
 
-  package{"apc":
-    name    => $::apc::pkg,
-    ensure  => 'installed',
+  package{ 'apc':
+    ensure  => installed,
+    name    => $pkg,
     require => Class[
       '::php',
       '::apache'
     ],
   }
 
-  augeas{"apc.ini settings":
-    context => "/files/${::apc::conf}",
-    lens    => 'PHP.lns',
-    incl    => "${::apc::conf}/apc.ini",
-    changes => [
-      'set enabled 1',
-      "set shm_size ${::apc::shmsize}",
-      "set shm_segments ${::apc::shmsegments}",
-      "set ttl ${::apc::ttl}",
-      "set stat ${::apc::stat}",
-      "set canonicalize ${::apc::canonicalize}",
-      "set include_once_override ${::apc::include_once_override}"
-    ],
+  if $apcu_backwards_compatibility {
+    if $backwards_compatibility_pkg {
+      warning('You did not specify the apcu backwards compatibility package name, it will not be installed!')
+    }
+    else {
+      package{ $backwards_compatibility_pkg:
+        ensure  => installed,
+        require => Package['apc'],
+      }
+    }
+  }
+
+  file { $conf:
+    ensure  => file,
+    content => template('apc/apc_ini.erb'),
     require => [
-      Package['apc'],
-      Class['::augeas'],
+      Package['apc']
     ],
   }
 
